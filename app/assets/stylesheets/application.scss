@@ -19,6 +19,7 @@
 @import 'chats';
 @import 'select2.min';
 @import 'toastr.min';
+@import 'new';
 
 .table {
   margin-bottom: 10px;
@@ -49,7 +50,12 @@ html {
   height: 100%;
 }
 
-
+form.user {
+  input#user_login,
+  input#user_password_confirmation,
+  input#user_password { width: 100px; }
+  input#user_email { width:200px; }
+}
 
 
 
