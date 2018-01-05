@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -53,7 +54,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :sex, :department_id, :password,
-                                 :phonenumber, :status)
+                                 :password_confirmation, :phonenumber, :status)
   end
 
 # Confirms a logged-in user.

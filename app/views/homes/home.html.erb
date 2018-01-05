@@ -8,6 +8,7 @@
           hello! <%= current_user.name %>
       <% else %>
           <a href="#" class="btn btn-primary btn-large" id="login_panel"> Log in!</a>
+          <%= link_to "Sign up", signup_path, class: "btn btn-primary btn-large" %>
       <% end %>
 
     </p>
