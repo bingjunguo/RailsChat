@@ -11,11 +11,11 @@ class UsersController < ApplicationController
   def create
     @user=User.new(user_params)
     if @user.save
-      @user.create_salary
-      @user.create_performance
-      redirect_to users_path, flash: {success: "添加成功"}
+      # @user.create_salary
+      # @user.create_performance
+      redirect_to root_path, flash: {success: "注册成功"}
     else
-      flash[:warning] = "账号信息填写有误,请重试"
+      flash[:warning] = "注册信息填写有误,请重试"
       render 'new'
     end
   end
@@ -65,16 +65,17 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    unless current_user == @user or current_user.role == 5
-      redirect_to user_path(current_user), flash: {:danger => '您没有权限浏览他人信息'}
-    end
+    # unless current_user == @user or current_user.role == 5
+    #   redirect_to user_path(current_user), flash: {:danger => '您没有权限浏览他人信息'}
+    # end
   end
 
   def set_user
-    @user=User.find_by_id(params[:id])
-    if @user.nil?
-      redirect_to root_path, flash: {:danger => '没有找到此用户'}
-    end
+    # guo 注释掉了这些
+    # @user=User.find_by_id(params[:id])
+    # if @user.nil?
+    #   redirect_to root_path, flash: {:danger => '没有找到此用户'}
+    # end
   end
 
 end
