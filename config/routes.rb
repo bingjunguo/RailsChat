@@ -61,6 +61,8 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  resources :account_activations, only: [:edit]
+
   resources :users do
     collection do
       get :index_json

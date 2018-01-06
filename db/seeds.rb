@@ -16,7 +16,9 @@
       role: Faker::Number.between(1, 4),
       sex: ['male', 'female'].sample,
       phonenumber: Faker::PhoneNumber.phone_number,
-      status: Faker::Company.profession
+      status: Faker::Company.profession,
+      activated: true,
+      activated_at: Time.zone.now
   )
 end
 
@@ -27,6 +29,9 @@ User.create!(name:  "admin",
              role: 1,
 				     sex: "male",
 				     phonenumber: "88888888",
+             status: "admin",
+             activated: true,
+             activated_at: Time.zone.now,
              admin: true)	
 
 User.first.friendships.create(:friend_id => 2)

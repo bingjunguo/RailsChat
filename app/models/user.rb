@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   before_save :downcase_email
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
+  before_create :create_activation_digest
   validates :name, presence: true, length: {maximum: 50}
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -72,9 +73,15 @@ class User < ActiveRecord::Base
 
   private
 
-  def downcase_email
-    self.email = email.downcase
-  end
+    def downcase_email
+      self.email = email.downcase
+    end
+
+    # 创建并赋值激活令牌和摘要
+    def create_activation_digest
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
 
   def self.all_except(user)
     where.not(id: user)
