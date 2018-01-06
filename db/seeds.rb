@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # test by zhangfei and peng
 
+
 (1..100).each do |index|
   User.create(
       name: "user#{index}",
@@ -19,7 +20,17 @@
   )
 end
 
+User.create!(name:  "admin",
+             email: "admin@test.com",
+             password:              "123456",
+             password_confirmation: "123456",
+             role: 1,
+				     sex: "male",
+				     phonenumber: "88888888",
+             admin: true)	
+
 User.first.friendships.create(:friend_id => 2)
 User.first.friendships.create(:friend_id => 3)
+
 
   
