@@ -1,2 +1,6 @@
 <%= @user.name %>, <%= @user.email %>, <%= @user.sex %>, 
 <%= @user.phonenumber %>
+<li>
+<%= link_to "Settings", edit_user_path(current_user) %>
+	
+</li>
