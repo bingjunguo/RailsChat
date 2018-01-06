@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @apply.user_id %>
+</p>
+
+<p>
+  <strong>Friend:</strong>
+  <%= @apply.friend_id %>
+</p>
+
+<%= link_to 'Edit', edit_apply_path(@apply) %> |
+<%= link_to 'Back', applies_path %>

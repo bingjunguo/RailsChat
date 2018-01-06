@@ -4,8 +4,15 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :chats
 
   has_many :friendships
+  has_many :applies
+
+  has_many :apps, :through => :applies
   has_many :friends, :through => :friendships
+
+  has_many :inverse_applies, :class_name => "Apply", :foreign_key => "friend_id"  
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+
+  has_many :inverse_apps, :through => :inverse_applies, :source => :user
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   before_save :downcase_email
