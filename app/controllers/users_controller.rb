@@ -21,20 +21,36 @@ class UsersController < ApplicationController
   end
 
   def show
+
     @user = User.find(params[:id])
   end
 
   def edit
+    # 在tutorial中，有如下两句话，在此处并不适用correct_user 中定义了 @user 变量，
+    # 所以可以把 edit 和 update 动作中的 @user 赋值语句删掉。
+    # 注意，上面那两句花呗是错误的！
+    @user = User.find(params[:id])
   end
 
+  # def update
+  #   if @user.update_attributes(user_params)
+  #     flash={:info => "更新成功"}
+  #   else
+  #     flash={:warning => "更新失败"}
+  #   end
+  #   redirect_to users_path, flash: flash
+  # end
+
   def update
+    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash={:info => "更新成功"}
+      flash[:success] = "Profile updated"
+      redirect_to @user
     else
-      flash={:warning => "更新失败"}
+      render 'edit'
     end
-    redirect_to users_path, flash: flash
   end
+
 
   def destroy
     @user.destroy

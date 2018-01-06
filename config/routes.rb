@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   
   get  '/signup',  to: 'users#new'
   post  '/signup', to: 'users#create'
+  get  '/edit',    to: 'users#edit'
+  patch '/edit',   to: 'users#edit'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

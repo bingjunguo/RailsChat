@@ -23,6 +23,11 @@
             <% end %>
           </li>
 
+
+          <li>           
+            <%= link_to "Settings", edit_user_path(current_user) %>
+          </li>
+
           <li>
             <%= link_to sessions_logout_path, method: :delete, class: "dropbtn" do %>
                 loggout <span class="	glyphicon glyphicon-off"></span>
