@@ -4,8 +4,12 @@
 <p>Hi <%= @user.name %>,</p>
 
 <p>
-Welcome to the Sample App! Click on the link below to activate your account:
+Welcome to the RailsChat! Click on the link below to activate your account:
 </p>
 
 <%= link_to "Activate", edit_account_activation_url(@user.activation_token,
                                                     email: @user.email) %>
+
+<p>
+If there is SSL length error, please use HTTP instead of HTTPS in the link.
+</p>                                                    

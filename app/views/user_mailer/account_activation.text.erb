@@ -3,3 +3,5 @@ Hi <%= @user.name %>,
 Welcome to the RailsChat! Click on the link below to activate your account:
 
 <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+If there is SSL length error, please use HTTP instead of HTTPS in the link.
