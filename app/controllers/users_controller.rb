@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:index, :new, :index_json]
   before_action :logged_in, only: [:show]
   before_action :correct_user, only: :show
+  before_action :admin_user,     only: :destroy
 
   def new
     @user=User.new
@@ -53,6 +54,7 @@ class UsersController < ApplicationController
 
 
   def destroy
+    @user = User.find(params[:id])
     @user.destroy
     redirect_to users_path(new: false), flash: {success: "用户删除"}
   end
@@ -69,11 +71,17 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:name, :email, :sex, :department_id,
-                                 :password, :password_confirmation,
-                                 :phonenumber, :status, :admin)
-  end
+    def user_params
+      params.require(:user).permit(:name, :email, :sex, :department_id,
+                                   :password, :password_confirmation,
+                                   :phonenumber, :status, :admin)
+    end
+
+    # 确保是管理员
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+
 
 # Confirms a logged-in user.
   def logged_in
