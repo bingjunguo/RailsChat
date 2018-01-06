@@ -37,5 +37,8 @@ User.create!(name:  "admin",
 User.first.friendships.create(:friend_id => 2)
 User.first.friendships.create(:friend_id => 3)
 
+User.first.friendships.create(:friend_id => 101)
+User.second.friendships.create(:friend_id => 101)
+
 
   
