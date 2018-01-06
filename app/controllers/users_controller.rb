@@ -14,7 +14,9 @@ class UsersController < ApplicationController
     if @user.save
       # @user.create_salary
       # @user.create_performance
-      redirect_to root_path, flash: {success: "注册成功"}
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "请检查邮件，激活用户"
+      redirect_to root_path    #, flash: {success: "注册成功"}
     else
       flash[:warning] = "注册信息填写有误,请重试"
       render 'new'

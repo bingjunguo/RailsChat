@@ -17380,3 +17380,179 @@ Migrating to AddActivationToUsers (20180106120722)
   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "friendships" ("friend_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["friend_id", 3], ["user_id", 1], ["created_at", "2018-01-06 12:32:55.901803"], ["updated_at", "2018-01-06 12:32:55.901803"]]
   [1m[36m (75.0ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/rails/mailers/user_mailer/account_activation" for 127.0.0.1 at 2018-01-06 21:33:07 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/account_activation"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (9.1ms)
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.5ms)
+
+UserMailer#account_activation: processed outbound mail in 146.9ms
+  Rendered /var/lib/gems/2.3.0/gems/railties-4.2.5.2/lib/rails/templates/rails/mailers/email.html.erb (11.8ms)
+Completed 200 OK in 236ms (Views: 29.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation?part=text%2Fhtml" for 127.0.0.1 at 2018-01-06 21:33:08 +0800
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/account_activation"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (0.5ms)
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.3ms)
+
+UserMailer#account_activation: processed outbound mail in 15.2ms
+  Rendered text template (0.0ms)
+Completed 200 OK in 25ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation?part=text%2Fplain" for 127.0.0.1 at 2018-01-06 21:33:14 +0800
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/plain", "path"=>"user_mailer/account_activation"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (0.3ms)
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.3ms)
+
+UserMailer#account_activation: processed outbound mail in 10.2ms
+  Rendered text template (0.0ms)
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation?part=text%2Fhtml" for 127.0.0.1 at 2018-01-06 21:33:16 +0800
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/account_activation"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (0.3ms)
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.1ms)
+
+UserMailer#account_activation: processed outbound mail in 11.7ms
+  Rendered text template (0.0ms)
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation?part=text%2Fplain" for 127.0.0.1 at 2018-01-06 21:33:25 +0800
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/plain", "path"=>"user_mailer/account_activation"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (0.4ms)
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.3ms)
+
+UserMailer#account_activation: processed outbound mail in 12.6ms
+  Rendered text template (0.0ms)
+Completed 200 OK in 18ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation?part=text%2Fhtml" for 127.0.0.1 at 2018-01-06 21:33:29 +0800
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/account_activation"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (0.2ms)
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.3ms)
+
+UserMailer#account_activation: processed outbound mail in 14.0ms
+  Rendered text template (0.0ms)
+Completed 200 OK in 20ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation?part=text%2Fplain" for 127.0.0.1 at 2018-01-06 21:33:32 +0800
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/plain", "path"=>"user_mailer/account_activation"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (0.3ms)
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.2ms)
+
+UserMailer#account_activation: processed outbound mail in 11.4ms
+  Rendered text template (0.0ms)
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-06 21:33:48 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_login_panel.html.erb (13.0ms)
+  Rendered layouts/_header.html.erb (16.2ms)
+  Rendered layouts/_content.html.erb (0.8ms)
+Completed 200 OK in 1329ms (Views: 1328.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-01-06 21:33:51 +0800
+Processing by UsersController#new as HTML
+  Rendered shared/_error_messages.html.erb (5.3ms)
+  Rendered users/new.html.erb within layouts/application (383.4ms)
+  Rendered layouts/_login_panel.html.erb (1.1ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 420ms (Views: 418.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2018-01-06 21:34:13 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"I5oZ8GTRtlSdSn0JC5aGtgyO1oolEdHEykXOBqDUvR5msf3M6vSVWDc6SRANR7rR4hVAvovv9eECtbT+90W4Pg==", "user"=>{"name"=>"guoactive7", "email"=>"guoactive7@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"新建账户"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('guoactive7@test.com') LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "guoactive7"], ["email", "guoactive7@test.com"], ["password_digest", "$2a$10$e3yjnpvxGZKuFIUZDC28x.vxKwtuImtKQgYIibCHArHQgEDb63j9G"], ["created_at", "2018-01-06 13:34:13.481294"], ["updated_at", "2018-01-06 13:34:13.481294"], ["activation_digest", "$2a$10$BwTXzWd5IiXp7WfNWm71feCyPKyU433yoSWlT7SWYsyUY1PIqE6fi"]]
+  [1m[35m (136.4ms)[0m  commit transaction
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (0.3ms)
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.2ms)
+
+UserMailer#account_activation: processed outbound mail in 13.4ms
+
+Sent mail to guoactive7@test.com (5.3ms)
+Date: Sat, 06 Jan 2018 21:34:13 +0800
+From: noreply@example.com
+To: guoactive7@test.com
+Message-ID: <5a50d055bbd71_6b0b11dd0d4724df@lenovo.mail>
+Subject: Account activation
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5a50d055ba713_6b0b11dd0d47231d";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5a50d055ba713_6b0b11dd0d47231d
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hi guoactive7,
+
+Welcome to the RailsChat! Click on the link below to activate your account:
+
+https://localhost:3000/account_activations/y5g7QRWZda4TYQiG5J6XpA/edit?email=guoactive7%40test.com
+
+----==_mimepart_5a50d055ba713_6b0b11dd0d47231d
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    
+<h1>RailsChat</h1>
+
+<p>Hi guoactive7,</p>
+
+<p>
+Welcome to the Sample App! Click on the link below to activate your account:
+</p>
+
+<a href="https://localhost:3000/account_activations/y5g7QRWZda4TYQiG5J6XpA/edit?email=guoactive7%40test.com">Activate</a>
+
+  </body>
+</html>
+
+----==_mimepart_5a50d055ba713_6b0b11dd0d47231d--
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 370ms (ActiveRecord: 137.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-06 21:34:13 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_login_panel.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 45ms (Views: 44.2ms | ActiveRecord: 0.0ms)
