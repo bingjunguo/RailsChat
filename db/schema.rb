@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180107040411) do
+ActiveRecord::Schema.define(version: 20180107120513) do
 
   create_table "chats", force: :cascade do |t|
     t.string   "name"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20180107040411) do
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
+    t.string   "picture"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

@@ -2,23 +2,43 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
+
+      <div  style="width:200px;height:200px;float:left">
+        <%= image_tag @user.picture.url if @user.picture? %>
+      </div>
+      <div style="width:200px;height:200px;;float:left">
+
+      <h2>
         <%= @user.name %>
-      </h1>
+      </h2>
       <h1>
         <%= @user.email %>
       </h1>
       <h1>
-      	<%= @user.sex %>
+        <%= @user.sex %>
       </h1>
       <h1>
-				<%= @user.phonenumber %>
+        <%= @user.status %>
       </h1>
+      <div/>
+
+
+
+
+
+
+ 
     </section>
-    <h3>
-		</h3>
     <h5>
     <% if current_user?(@user)%>
+      <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <span class="picture">
+          <%= f.file_field :picture %>
+        </span>
+        <%= f.submit "上传头像", class: "btn btn-primary" %>
+      <% end %>
+      <h1> </h1>
         <i class="fa fa-cog fa-fw"></i>
         <%= link_to edit_user_path(current_user), class: "dropbtn" do %>
             编辑信息  

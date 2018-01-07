@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  mount_uploader :picture, PictureUploader
+
   has_many :microposts, dependent: :destroy
 
   has_many :messages

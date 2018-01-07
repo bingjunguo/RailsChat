@@ -1,5 +1,16 @@
-<h1><%= current_user.name %></h1>
+
+<div  style="width:200px;height:200px;float:left">
+	<%= image_tag @user.picture.url if @user.picture? %>
+</div>
+<div style="width:200px;height:200px;float:left">
+	<h2>
+		<%= current_user.name %>
+	</h2>
+<div/>
+
 <span><%= link_to "查看我的简介", current_user %></span>
 <h5>
 <span><%= pluralize(current_user.microposts.count, "micropost") %></span>
 </h5>
+
+

@@ -76,7 +76,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :sex, :department_id,
                                    :password, :password_confirmation,
-                                   :phonenumber, :status, :admin)
+                                   :phonenumber, :status, :admin, :picture)
     end
 
     # 确保是管理员
