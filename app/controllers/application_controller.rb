@@ -3,4 +3,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  include SessionsHelper
+
+  private
+
+    # 确保用户已登录
+    def logged_in
+    	unless logged_in?
+      	redirect_to root_url, flash: {danger: '请登陆'}
+    	end
+  	end
+
 end

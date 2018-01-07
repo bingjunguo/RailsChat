@@ -60,7 +60,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
+  resources :microposts,          only: [:create, :destroy]
   resources :account_activations, only: [:edit]
 
   resources :users do

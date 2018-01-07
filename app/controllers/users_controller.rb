@@ -86,11 +86,12 @@ class UsersController < ApplicationController
 
 
 # Confirms a logged-in user.
-  def logged_in
-    unless logged_in?
-      redirect_to root_url, flash: {danger: '请登陆'}
-    end
-  end
+# 郭 移到了application_controller.rb
+  # def logged_in
+  #   unless logged_in?
+  #     redirect_to root_url, flash: {danger: '请登陆'}
+  #   end
+  # end
 
   def correct_user
     # unless current_user == @user or current_user.role == 5
