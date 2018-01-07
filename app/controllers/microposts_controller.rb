@@ -24,10 +24,17 @@ class MicropostsController < ApplicationController
 
     def micropost_params
       params.require(:micropost).permit(:content, :picture)
+      
     end
+
     
     def correct_user
-      @micropost = current_user.microposts.find_by(id: params[:id])
+    	if current_user.admin?
+    		@micropost = Micropost.find_by(id: params[:id])
+    	else
+
+      	@micropost = current_user.microposts.find_by(id: params[:id])
+      end 
       redirect_to root_url if @micropost.nil?
     end
 end
