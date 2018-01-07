@@ -11,9 +11,11 @@
 
       <% if current_user %>
 
-          <% if current_user.admin?%>
-            <li><%= link_to "Users", users_path %></li>
-          <% end %>
+          <li>
+            <%= link_to users_path, class: "dropbtn" do %>
+                Users  <i class="fa fa-users"></i>
+            <% end %>
+          </li>
 
           <li>
             <%= link_to root_path, class: "dropbtn" do %>
