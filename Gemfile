@@ -8,7 +8,11 @@ gem 'faker', '~> 1.6.3'
 gem 'rails_admin', '~> 0.8.1'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+# 郭炳军添加
 gem 'nokogiri',                '1.6.8.1'
+gem 'carrierwave',             '1.1.0'
+gem 'mini_magick',             '4.7.0'
+gem 'fog-aws',                 '2.0.0'
 
 # for download
 gem 'paperclip'
