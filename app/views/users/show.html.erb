@@ -17,9 +17,14 @@
     </section>
     <h3>
 		</h3>
-    <li>
-			<%= link_to "Settings", edit_user_path(current_user) %>
-		</li>
+    <h5>
+    <i class="fa fa-cog fa-fw"></i>
+      <%= link_to edit_user_path(current_user), class: "dropbtn" do %>
+          编辑信息  
+      <% end %>
+    </h5>
+
+
   </aside>
   <div class="col-md-8">
     <% if @user.microposts.any? %>
