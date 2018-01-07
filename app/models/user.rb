@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :microposts, dependent: :destroy
+
   has_many :messages
   has_and_belongs_to_many :chats
 
