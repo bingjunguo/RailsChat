@@ -77,6 +77,16 @@ class User < ActiveRecord::Base
     User.all_except(current_user).all_except(current_user.friends).where("users.name LIKE ?", "%#{params[:query]}%")
   end
 
+  def self.search_new_friends(params, current_user)
+    friend_ids = Apply.where("applies.user_id = ?", "#{current_user.id}")
+    #User.where("users.name IN ?", friends)
+    friends_info = Array.new
+    for friend in friend_ids
+      friends_info += User.where("users.id = ?", "#{friend.friend_id}")
+    end
+    return friends_info
+  end
+
   private
 
   def downcase_email

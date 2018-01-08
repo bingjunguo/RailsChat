@@ -3,10 +3,13 @@ class FriendshipsController < ApplicationController
   before_action :logged_in
 
   def create
-    @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
-    if @friendship.save
-      flash[:info] = "添加好友成功"
-      redirect_to chats_path
+    @apply = current_user.applies.find_by(friend_id: params[:friend_id])
+    if @apply.destroy
+      @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
+      if @friendship.save
+        flash[:info] = "添加好友成功"
+        redirect_to chats_path
+      end
     else
       flash[:error] = "无法添加好友"
       redirect_to chats_path

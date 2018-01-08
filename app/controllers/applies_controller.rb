@@ -2,7 +2,12 @@ class AppliesController < ApplicationController
   include SessionsHelper
   before_action :logged_in
 
-  #before_action :set_apply, only: [:show, :edit, :update, :destroy]
+  #before_action :set_apply, only: [:destroy]
+
+  def index
+    @applies = Apply.all
+
+  end
 
   # POST /applies
   # POST /applies.json
@@ -20,22 +25,22 @@ class AppliesController < ApplicationController
   def destroy
     @apply = current_user.applies.find_by(friend_id: params[:id])
     @apply.destroy
-
-    user=User.find_by_id(params[:id])
-    current_user.chats.each do |chat|
-      if (chat.users-[user, current_user]).blank?
-        chat.destroy
-      end
-    end
-
-    #flash[:success] = "删除好友成功"
-    #redirect_to chats_path
   end
 
   private
-  def logged_in
+    # Use callbacks to share common setup or constraints between actions.
+   # def set_apply
+    #  @apply = Apply.find(params[:id])
+    #end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    #def apply_params
+     # params.require(:apply).permit(:user_id, :friend_id)
+
+    def logged_in
     unless logged_in?
       redirect_to root_url, flash: {danger: '请登陆'}
     end
   end
+end
 end
