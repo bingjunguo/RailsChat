@@ -78,11 +78,11 @@ class User < ActiveRecord::Base
   end
 
   def self.search_new_friends(params, current_user)
-    friend_ids = Apply.where("applies.user_id = ?", "#{current_user.id}")
+    friend_ids = Apply.where("applies.friend_id = ?", "#{current_user.id}")
     #User.where("users.name IN ?", friends)
     friends_info = Array.new
     for friend in friend_ids
-      friends_info += User.where("users.id = ?", "#{friend.friend_id}")
+      friends_info += User.where("users.id = ?", "#{friend.user_id}")
     end
     return friends_info
   end
