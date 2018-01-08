@@ -59,6 +59,11 @@
     <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#myModal">添加朋友
     </button>
   </div>
-</div>
 
+  <div class="panel-footer">
+    <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#myNewFriend" onclick="ajax_request()">好友验证
+    </button>
+  </div>
+</div>
+<%= render "new_friends" %>
 <%= render "search_fridends" %>

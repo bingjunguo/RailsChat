@@ -9,9 +9,16 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :chats
 
   has_many :friendships
+  has_many :applies
+
   has_many :friends, :through => :friendships
+  has_many :apps, :through => :applies
+
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_applies, :class_name => "Apply", :foreign_key => "friend_id" 
+
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :inverse_apps, :through => :inverse_applies, :source => :user
 
   has_many :notifies, :dependent => :destroy
   
@@ -78,6 +85,16 @@ class User < ActiveRecord::Base
     User.all_except(current_user).all_except(current_user.friends).where("users.name LIKE ?", "%#{params[:query]}%")
   end
 
+  def self.search_new_friends(params, current_user)
+      friend_ids = Apply.where("applies.friend_id = ?", "#{current_user.id}")
+      #User.where("users.name IN ?", friends)
+      friends_info = Array.new
+      for friend in friend_ids
+        friends_info += User.where("users.id = ?", "#{friend.user_id}")
+      end
+      return friends_info
+  end
+  
   private
 
     def downcase_email

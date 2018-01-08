@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :applies
   resources :friendships
   
   get  '/signup',  to: 'users#new'
@@ -66,6 +67,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get :index_json
+      get :index_new_friends_json
     end
   end
   resources :salaries

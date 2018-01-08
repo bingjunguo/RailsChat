@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180107120513) do
+ActiveRecord::Schema.define(version: 20180108083812) do
+
+  create_table "applies", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "applies", ["friend_id"], name: "index_applies_on_friend_id"
+  add_index "applies", ["user_id"], name: "index_applies_on_user_id"
 
   create_table "chats", force: :cascade do |t|
     t.string   "name"
@@ -62,6 +72,16 @@ ActiveRecord::Schema.define(version: 20180107120513) do
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+
+  create_table "notifies", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "chat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "notifies", ["chat_id"], name: "index_notifies_on_chat_id"
+  add_index "notifies", ["user_id"], name: "index_notifies_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
