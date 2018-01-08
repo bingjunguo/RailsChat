@@ -6201,3 +6201,54 @@ Completed 200 OK in 51ms (Views: 48.5ms | ActiveRecord: 0.3ms)
   [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "applies" WHERE "applies"."id" = ?[0m  [["id", 14]]
   [1m[35m (125.3ms)[0m  commit transaction
   [1m[36mApply Load (0.3ms)[0m  [1mSELECT "applies".* FROM "applies"[0m
+
+
+Started DELETE "/sessions/logout" for 127.0.0.1 at 2018-01-08 15:51:09 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"XRJNJVbNog3BCKZ1WG5eBwkZ1frePauisugXdXmTEFcUbxfL1rNC+/o7p/Vp9Fc4MJSNbkmeVn1sDXW+YQYQlg=="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "remember_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["remember_digest", nil], ["updated_at", "2018-01-08 07:51:09.158147"], ["id", 1]]
+  [1m[36m (124.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 161ms (ActiveRecord: 125.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-08 15:51:09 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_login_panel.html.erb (4.3ms)
+  Rendered layouts/_header.html.erb (5.7ms)
+  Rendered layouts/_content.html.erb (0.5ms)
+Completed 200 OK in 404ms (Views: 403.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-fc5ef4014c165b083930c31c5bb5af2d68792bf18ff206787252a5c23a225da0.css?body=1" for 127.0.0.1 at 2018-01-08 15:51:09 +0800
+
+
+Started GET "/assets/bootstrap.file-input.self-467aac2b264df4efd6b902977182473cd79513a25b2028999facfa8ab1133fec.js?body=1" for 127.0.0.1 at 2018-01-08 15:51:09 +0800
+
+
+Started GET "/assets/bootstrap.min.self-504d59678f10d79a661b6cecdce5b8c1d5bfd98e860614584c0a40399552d61f.js?body=1" for 127.0.0.1 at 2018-01-08 15:51:09 +0800
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 127.0.0.1 at 2018-01-08 15:51:09 +0800
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2018-01-08 15:51:09 +0800
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2018-01-08 15:51:09 +0800
+
+
+Started GET "/assets/sync.self-570ed504e84206f050c8bc30d052d71600f341b859ea362960c1fc810fcbb46a.js?body=1" for 127.0.0.1 at 2018-01-08 15:51:09 +0800
+
+
+Started GET "/assets/application.self-10ad0916cf31256fe71785e8dc9cc297a96b1cdf7b74aeb61711199b9a3d003f.js?body=1" for 127.0.0.1 at 2018-01-08 15:51:09 +0800
+
+
+Started GET "/assets/select2.min.self-29080377793c2a531be0bad7d46aa3fcf1ede0008ebf68b1e4f97927f368ac38.js?body=1" for 127.0.0.1 at 2018-01-08 15:51:09 +0800
+
+
+Started GET "/assets/toastr.min.self-d1e748daa450eccf497f106231f0e799b278d085d431d75f1df5eef9968808bd.js?body=1" for 127.0.0.1 at 2018-01-08 15:51:09 +0800
