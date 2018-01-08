@@ -1,3 +1,4 @@
+# coding: utf-8
 class ChatsController < ApplicationController
   include SessionsHelper
   include ChatsHelper
@@ -66,6 +67,11 @@ class ChatsController < ApplicationController
   end
 
   def show
+    notifies = Notify.where user: current_user, chat: @chat
+    notifies.each do | notify |
+        notify.destroy
+    end if notifies
+
     @new_message = Message.new
     @users_in_chat= @chat.users-[current_user]
     @friends=current_user.friends+current_user.inverse_friends

@@ -10,6 +10,8 @@
     <ul class="nav navbar-nav navbar-right">
 
       <% if logged_in? %>
+      <%= sync partial: 'notify_row', collection: Notify.by_user( current_user ), refetch: true %>
+      <%= sync_new partial: 'notify_row', resource: Notify.new, scope: current_user, refetch: true %>
 
         <% if current_user.admin? %>
             <li>

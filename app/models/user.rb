@@ -1,3 +1,4 @@
+# coding: utf-8
 class User < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
@@ -12,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
+  has_many :notifies, :dependent => :destroy
+  
   before_save :downcase_email
   attr_accessor :remember_token, :activation_token
   before_create :create_activation_digest
