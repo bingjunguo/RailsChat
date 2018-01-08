@@ -1,3 +1,4 @@
+# coding: utf-8
 class MessagesController < ApplicationController
   include SessionsHelper
   before_action :set_message, only: [:update, :destroy]
@@ -8,6 +9,12 @@ class MessagesController < ApplicationController
     redirect_to chats_path, flash: {:warning => '此聊天不存在'} and return if chat.nil?
     @message.chat=chat
     if @message.save
+      chat.users.each do | user |
+        notify = Notify.create( user: user, chat: chat )
+        if notify.save
+          sync_new notify, scope: user
+        end
+      end
       sync_new @message, scope: chat
     else
       redirect_to chat_path(chat), flash: {:warning => '消息发送失败'} and return
