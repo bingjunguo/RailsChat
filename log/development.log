@@ -41541,3 +41541,711 @@ Processing by HomesController#home as HTML
   Rendered layouts/_header.html.erb (2.7ms)
   Rendered layouts/_content.html.erb (0.1ms)
 Completed 200 OK in 57ms (Views: 54.6ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/sessions/logout" for 127.0.0.1 at 2018-01-09 22:45:46 +0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"sGLfJkg795Q6x6DKR8r6/k4CGbXQLulpSj3+fuZ8+hvScUxqvRAJ+I1xjqnQjr2h08pbeCLyEbQ8sEnA0nkWcA=="}
+  [1m[35mUser Load (15.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 21ms (ActiveRecord: 15.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 22:45:46 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_login_panel.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 148ms (Views: 147.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/computer.png" for 127.0.0.1 at 2018-01-09 22:45:46 +0800
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-01-09 22:45:48 +0800
+Processing by UsersController#new as HTML
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  Rendered users/new.html.erb within layouts/application (3.6ms)
+  Rendered layouts/_login_panel.html.erb (0.5ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 82ms (Views: 81.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2018-01-09 22:46:14 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EG1WuNKw9QTv0iottPyNmkQAzP1RgNqgWMPs1LyK5tNyfsX0J5sLaFhkBE4juMrF2ciOMKNcIn0uTltqiI8KuA==", "user"=>{"name"=>"123", "email"=>"123@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"新建账户"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('123@test.com') LIMIT 1
+  [1m[36mSQL (33.0ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "123"], ["email", "123@test.com"], ["password_digest", "$2a$10$esAtXCWSciEVqVXgSlWEdO8O/gx18hCPVTVGACLvoZmdWGMVxC3v."], ["created_at", "2018-01-09 14:46:14.396260"], ["updated_at", "2018-01-09 14:46:14.396260"], ["activation_digest", "$2a$10$GiPgRghde5y8xobPHrKKT.x2.OeKe1Av9AExSZUnSO.iyLmZSOJmK"]]
+  [1m[35m (92.7ms)[0m  commit transaction
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (1.6ms)
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.7ms)
+
+UserMailer#account_activation: processed outbound mail in 370.7ms
+
+Sent mail to 123@test.com (9.5ms)
+Date: Tue, 09 Jan 2018 22:46:15 +0800
+From: noreply@example.com
+To: 123@test.com
+Message-ID: <5a54d5b778f03_905c530c8699ba@lenovo.mail>
+Subject: Account activation
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5a54d5b7766df_905c530c869811";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5a54d5b7766df_905c530c869811
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hi 123,
+
+Welcome to the RailsChat! Click on the link below to activate your account:
+
+https://localhost:3000/account_activations/gSjLorv95kma-TrTMmklUA/edit?email=123%40test.com
+
+If there is SSL length error, please use HTTP instead of HTTPS in the link.
+
+----==_mimepart_5a54d5b7766df_905c530c869811
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    
+<h1>RailsChat</h1>
+
+<p>Hi 123,</p>
+
+<p>
+Welcome to the RailsChat! Click on the link below to activate your account:
+</p>
+
+<a href="https://localhost:3000/account_activations/gSjLorv95kma-TrTMmklUA/edit?email=123%40test.com">Activate</a>
+
+<p>
+If there is SSL length error, please use HTTP instead of HTTPS in the link.
+</p>                                                    
+
+  </body>
+</html>
+
+----==_mimepart_5a54d5b7766df_905c530c869811--
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 1173ms (ActiveRecord: 125.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 22:46:15 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_login_panel.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_content.html.erb (0.2ms)
+Completed 200 OK in 36ms (Views: 35.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/computer.png" for 127.0.0.1 at 2018-01-09 22:46:15 +0800
+
+
+Started POST "/sessions/login" for 127.0.0.1 at 2018-01-09 22:46:33 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ygUK89VY5n/g1tNborFfTugwpdkuLv4xfUsvXi7/6aKoFpm/IHMYE1dg/Tg19RgRdfjnFNzyBuwLxpjgGvoFyQ==", "session"=>{"email"=>"123@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1[0m  [["email", "123@test.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 71ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 22:46:33 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_login_panel.html.erb (0.5ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 33ms (Views: 32.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/computer.png" for 127.0.0.1 at 2018-01-09 22:46:33 +0800
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-01-09 22:48:27 +0800
+Processing by UsersController#new as HTML
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  Rendered users/new.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_login_panel.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 63ms (Views: 42.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2018-01-09 22:48:52 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EyuAXWOoMZCNctTv6oA1hkNhxxlV4HXqThXJzPyql2dxOBMRloPP/DrE+ox9xHLZ3qmF1Kc8jTc4mH5yyK97DA==", "user"=>{"name"=>"good", "email"=>"good@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"新建账户"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('good@test.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "good"], ["email", "good@test.com"], ["password_digest", "$2a$10$QKJmYyTYmRfMcYGTqvU6CuOoZUzR2s8uPoH7.AdlPa3yApHZkx5jm"], ["created_at", "2018-01-09 14:48:52.200631"], ["updated_at", "2018-01-09 14:48:52.200631"]]
+  [1m[36m (153.4ms)[0m  [1mcommit transaction[0m
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (1.3ms)
+
+UserMailer#account_activation: processed outbound mail in 8.8ms
+Completed 500 Internal Server Error in 253ms (ActiveRecord: 153.9ms)
+
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"account_activations", :email=>"good@test.com", :id=>nil} missing required keys: [:id]):
+     7: Welcome to the RailsChat! Click on the link below to activate your account:
+     8: </p>
+     9: 
+    10: <%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+    11:                                                     email: @user.email) %>
+    12: 
+    13: <p>
+  app/views/user_mailer/account_activation.html.erb:10:in `_app_views_user_mailer_account_activation_html_erb___2706885199225929738_52601500'
+  app/mailers/user_mailer.rb:11:in `account_activation'
+  app/controllers/users_controller.rb:17:in `create'
+
+
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (13.8ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (26.7ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2018-01-09 22:49:45 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EyuAXWOoMZCNctTv6oA1hkNhxxlV4HXqThXJzPyql2dxOBMRloPP/DrE+ox9xHLZ3qmF1Kc8jTc4mH5yyK97DA==", "user"=>{"name"=>"good", "email"=>"good@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"新建账户"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('good@test.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  Rendered shared/_error_messages.html.erb (0.6ms)
+  Rendered users/new.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_login_panel.html.erb (0.5ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 137ms (Views: 34.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.self-5f38d86265ddac2435354d6ade2420689b8df8dd4bed963f6881e861f482650c.css?body=1" for 127.0.0.1 at 2018-01-09 22:49:45 +0800
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2018-01-09 22:49:45 +0800
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2018-01-09 22:49:45 +0800
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 127.0.0.1 at 2018-01-09 22:49:45 +0800
+
+
+Started GET "/assets/bootstrap.min.self-504d59678f10d79a661b6cecdce5b8c1d5bfd98e860614584c0a40399552d61f.js?body=1" for 127.0.0.1 at 2018-01-09 22:49:45 +0800
+
+
+Started GET "/assets/bootstrap.file-input.self-467aac2b264df4efd6b902977182473cd79513a25b2028999facfa8ab1133fec.js?body=1" for 127.0.0.1 at 2018-01-09 22:49:45 +0800
+
+
+Started GET "/assets/sync.self-570ed504e84206f050c8bc30d052d71600f341b859ea362960c1fc810fcbb46a.js?body=1" for 127.0.0.1 at 2018-01-09 22:49:45 +0800
+
+
+Started GET "/assets/select2.min.self-29080377793c2a531be0bad7d46aa3fcf1ede0008ebf68b1e4f97927f368ac38.js?body=1" for 127.0.0.1 at 2018-01-09 22:49:45 +0800
+
+
+Started GET "/assets/toastr.min.self-d1e748daa450eccf497f106231f0e799b278d085d431d75f1df5eef9968808bd.js?body=1" for 127.0.0.1 at 2018-01-09 22:49:45 +0800
+
+
+Started GET "/assets/application.self-10ad0916cf31256fe71785e8dc9cc297a96b1cdf7b74aeb61711199b9a3d003f.js?body=1" for 127.0.0.1 at 2018-01-09 22:49:45 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 22:49:50 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_login_panel.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 36ms (Views: 35.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/computer.png" for 127.0.0.1 at 2018-01-09 22:49:51 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 23:04:13 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_login_panel.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 32ms (Views: 31.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-5f38d86265ddac2435354d6ade2420689b8df8dd4bed963f6881e861f482650c.css?body=1" for 127.0.0.1 at 2018-01-09 23:04:13 +0800
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2018-01-09 23:04:13 +0800
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2018-01-09 23:04:13 +0800
+
+
+Started GET "/assets/bootstrap.file-input.self-467aac2b264df4efd6b902977182473cd79513a25b2028999facfa8ab1133fec.js?body=1" for 127.0.0.1 at 2018-01-09 23:04:13 +0800
+
+
+Started GET "/assets/bootstrap.min.self-504d59678f10d79a661b6cecdce5b8c1d5bfd98e860614584c0a40399552d61f.js?body=1" for 127.0.0.1 at 2018-01-09 23:04:13 +0800
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 127.0.0.1 at 2018-01-09 23:04:13 +0800
+
+
+Started GET "/assets/sync.self-570ed504e84206f050c8bc30d052d71600f341b859ea362960c1fc810fcbb46a.js?body=1" for 127.0.0.1 at 2018-01-09 23:04:13 +0800
+
+
+Started GET "/assets/select2.min.self-29080377793c2a531be0bad7d46aa3fcf1ede0008ebf68b1e4f97927f368ac38.js?body=1" for 127.0.0.1 at 2018-01-09 23:04:13 +0800
+
+
+Started GET "/assets/toastr.min.self-d1e748daa450eccf497f106231f0e799b278d085d431d75f1df5eef9968808bd.js?body=1" for 127.0.0.1 at 2018-01-09 23:04:13 +0800
+
+
+Started GET "/assets/application.self-10ad0916cf31256fe71785e8dc9cc297a96b1cdf7b74aeb61711199b9a3d003f.js?body=1" for 127.0.0.1 at 2018-01-09 23:04:13 +0800
+
+
+Started GET "/assets/computer.png" for 127.0.0.1 at 2018-01-09 23:04:13 +0800
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-01-09 23:04:15 +0800
+Processing by UsersController#new as HTML
+  Rendered shared/_error_messages.html.erb (0.2ms)
+  Rendered users/new.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_login_panel.html.erb (0.5ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 69ms (Views: 45.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2018-01-09 23:04:34 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RlnpW09y48VcGV8+ZLClQXE9sxvBgjuXuzrW5D6C34UkSnoXulkdqeuvcV3z9OIe7PXx1jNew0rNt2FaCocz7g==", "user"=>{"name"=>"kai", "email"=>"kai@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"新建账户"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('kai@test.com') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kai"], ["email", "kai@test.com"], ["password_digest", "$2a$10$q3H26QIGbbCdwZGtVPk37.RthbKjzDtkJ8LDRqL.3Ow5Kz.vKAf96"], ["created_at", "2018-01-09 15:04:34.748278"], ["updated_at", "2018-01-09 15:04:34.748278"], ["activation_digest", "$2a$10$szmd5ywoQkMQ4VH3eF6Rq.Hhl5VQNr1VtKg6PAKEVZtHHMkIdpjRa"]]
+  [1m[35m (92.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 299ms (ActiveRecord: 92.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 23:04:34 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_login_panel.html.erb (0.5ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 35ms (Views: 34.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/computer.png" for 127.0.0.1 at 2018-01-09 23:04:35 +0800
+
+
+Started POST "/sessions/login" for 127.0.0.1 at 2018-01-09 23:04:52 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kWSg+FXBLWqCAwoP+WGqfCNj+/+aKQVaUlvwYbbQO9HzdzO0oOrTBjW1JGxuJe0jvqu5Mmj1/Yck1kffgtXXug==", "session"=>{"email"=>"kai@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "button"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1[0m  [["email", "kai@test.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 70ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 23:04:52 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_login_panel.html.erb (0.5ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 31ms (Views: 30.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/computer.png" for 127.0.0.1 at 2018-01-09 23:04:52 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 23:33:03 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_login_panel.html.erb (10.8ms)
+  Rendered layouts/_header.html.erb (12.7ms)
+  Rendered layouts/_content.html.erb (0.7ms)
+Completed 200 OK in 411ms (Views: 389.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-5f38d86265ddac2435354d6ade2420689b8df8dd4bed963f6881e861f482650c.css?body=1" for 127.0.0.1 at 2018-01-09 23:33:04 +0800
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2018-01-09 23:33:04 +0800
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2018-01-09 23:33:04 +0800
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 127.0.0.1 at 2018-01-09 23:33:04 +0800
+
+
+Started GET "/assets/bootstrap.min.self-504d59678f10d79a661b6cecdce5b8c1d5bfd98e860614584c0a40399552d61f.js?body=1" for 127.0.0.1 at 2018-01-09 23:33:04 +0800
+
+
+Started GET "/assets/bootstrap.file-input.self-467aac2b264df4efd6b902977182473cd79513a25b2028999facfa8ab1133fec.js?body=1" for 127.0.0.1 at 2018-01-09 23:33:04 +0800
+
+
+Started GET "/assets/sync.self-570ed504e84206f050c8bc30d052d71600f341b859ea362960c1fc810fcbb46a.js?body=1" for 127.0.0.1 at 2018-01-09 23:33:04 +0800
+
+
+Started GET "/assets/select2.min.self-29080377793c2a531be0bad7d46aa3fcf1ede0008ebf68b1e4f97927f368ac38.js?body=1" for 127.0.0.1 at 2018-01-09 23:33:04 +0800
+
+
+Started GET "/assets/toastr.min.self-d1e748daa450eccf497f106231f0e799b278d085d431d75f1df5eef9968808bd.js?body=1" for 127.0.0.1 at 2018-01-09 23:33:04 +0800
+
+
+Started GET "/assets/application.self-10ad0916cf31256fe71785e8dc9cc297a96b1cdf7b74aeb61711199b9a3d003f.js?body=1" for 127.0.0.1 at 2018-01-09 23:33:04 +0800
+
+
+Started GET "/assets/computer.png" for 127.0.0.1 at 2018-01-09 23:33:04 +0800
+
+
+Started GET "/signup" for 127.0.0.1 at 2018-01-09 23:33:05 +0800
+Processing by UsersController#new as HTML
+  Rendered shared/_error_messages.html.erb (15.8ms)
+  Rendered users/new.html.erb within layouts/application (466.1ms)
+  Rendered layouts/_login_panel.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 551ms (Views: 500.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2018-01-09 23:33:26 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ed4D2DMupOzyah+F1NJk0qIbeRDwOgLreoZ/zeZ9qE3l3lOhK4oggtrI8QDax0YOt3cbjUWybTGBb9LN4R87ZQ==", "user"=>{"name"=>"me", "email"=>"me@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"新建账户"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('me@test.com') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "me"], ["email", "me@test.com"], ["password_digest", "$2a$10$cpgqnLQvArx9BqotjlklN.t2hDO.3ipsmiRYpNf.qi1DbZaz20tKa"], ["created_at", "2018-01-09 15:33:26.218552"], ["updated_at", "2018-01-09 15:33:26.218552"]]
+  [1m[36m (95.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 238ms (ActiveRecord: 95.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 23:33:26 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_login_panel.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 34ms (Views: 33.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/computer.png" for 127.0.0.1 at 2018-01-09 23:33:26 +0800
+
+
+Started POST "/sessions/login" for 127.0.0.1 at 2018-01-09 23:34:21 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oiLAPHqVNak/lu5hXbGronODtA4B1c2gLTxZBKmfKZVWIpBFYjGxxxc0AORTpIl+Zu/Wk7RdonrW1fQErv26vQ==", "session"=>{"email"=>"me@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "button"=>""}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "me@test.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 181ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 23:34:21 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_login_panel.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 33ms (Views: 32.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/computer.png" for 127.0.0.1 at 2018-01-09 23:34:21 +0800
+
+
+Started POST "/sessions/login" for 127.0.0.1 at 2018-01-09 23:41:43 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ii33dT9QitfI+2YiKEFJ8teLqP9xPZ1Ainbx6ybQW9F+LacMJ/QOueBZiKcmVGsuwufKYsS18ppxn1zrIbLI+Q==", "session"=>{"email"=>"me@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "button"=>""}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1[0m  [["email", "me@test.com"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 106ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 23:41:43 +0800
+Processing by HomesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 109]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?[0m  [["user_id", 109]]
+  Rendered shared/_user_info.html.erb (2.6ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  Rendered shared/_micropost_form.html.erb (14.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?  [["user_id", 109]]
+  [1m[36mMicropost Load (0.3ms)[0m  [1mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."user_id" = ?  ORDER BY "microposts"."created_at" DESC LIMIT 30 OFFSET 0[0m  [["user_id", 109]]
+  Rendered collection (0.0ms)
+  Rendered homes/home.html.erb within layouts/application (21.1ms)
+  [1m[35mNotify Load (0.1ms)[0m  SELECT "notifies".* FROM "notifies" WHERE "notifies"."user_id" = ?  [["user_id", 109]]
+  Rendered layouts/_login_panel.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (8.7ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 106ms (Views: 66.4ms | ActiveRecord: 1.3ms)
+
+
+Started DELETE "/sessions/logout" for 127.0.0.1 at 2018-01-09 23:41:49 +0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"TAsDVq3kskCFutoLrta3AOd/udhyG4RfAorLE6Bxf9O4C1MvtUA2Lq0YNI6gw5Xc8hPbRceT64X5Y2YTpxPs+w=="}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 109]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 23:41:49 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_login_panel.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_content.html.erb (0.2ms)
+Completed 200 OK in 36ms (Views: 35.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/computer.png" for 127.0.0.1 at 2018-01-09 23:41:49 +0800
+
+
+Started POST "/sessions/login" for 127.0.0.1 at 2018-01-09 23:45:24 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"E0GjITJw5V/qQorcZ6LNSzEH4t1E9ri6537yjszpGmHnQfNYKtRhMcLgZFlpt++XJGuAQPF+12Acl1+Oy4uJSQ==", "session"=>{"email"=>"user1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "button"=>""}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "user1@test.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 71ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 23:45:25 +0800
+Processing by HomesController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?  [["user_id", 1]]
+  Rendered shared/_user_info.html.erb (2.3ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  Rendered shared/_micropost_form.html.erb (1.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mMicropost Load (0.2ms)[0m  SELECT  "microposts".* FROM "microposts" WHERE "microposts"."user_id" = ?  ORDER BY "microposts"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered microposts/_micropost.html.erb (12.2ms)
+  Rendered homes/home.html.erb within layouts/application (24.7ms)
+  [1m[35mNotify Load (0.1ms)[0m  SELECT "notifies".* FROM "notifies" WHERE "notifies"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/_login_panel.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (4.6ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 69ms (Views: 65.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/microposts" for 127.0.0.1 at 2018-01-09 23:45:53 +0800
+Processing by MicropostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AW0j0po6ARaHpDkbcGgBuaTNwsz0C/hzsOOpt2lWUHr1bXOrgp6FeK8G155+fSNlsaGgUUGDl6lLCgS3bjTDUg==", "micropost"=>{"content"=>"my god", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00000009d1f8e0 @tempfile=#<Tempfile:/tmp/RackMultipart20180109-8959-10ckn0i.jpg>, @original_filename="brard.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"micropost[picture]\"; filename=\"brard.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"发布"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "microposts" ("content", "picture", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["content", "my god"], ["picture", "brard.jpg"], ["user_id", 1], ["created_at", "2018-01-09 15:45:54.898631"], ["updated_at", "2018-01-09 15:45:54.898631"]]
+  [1m[35m (119.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 1558ms (ActiveRecord: 119.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 23:45:55 +0800
+Processing by HomesController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?  [["user_id", 1]]
+  Rendered shared/_user_info.html.erb (2.9ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  Rendered shared/_micropost_form.html.erb (1.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mMicropost Load (0.2ms)[0m  SELECT  "microposts".* FROM "microposts" WHERE "microposts"."user_id" = ?  ORDER BY "microposts"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered microposts/_micropost.html.erb (11.9ms)
+  Rendered homes/home.html.erb within layouts/application (22.8ms)
+  [1m[35mNotify Load (0.1ms)[0m  SELECT "notifies".* FROM "notifies" WHERE "notifies"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/_login_panel.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (3.1ms)
+  Rendered layouts/_content.html.erb (0.2ms)
+Completed 200 OK in 66ms (Views: 62.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 23:47:47 +0800
+Processing by HomesController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?  [["user_id", 1]]
+  Rendered shared/_user_info.html.erb (2.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  Rendered shared/_micropost_form.html.erb (1.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mMicropost Load (0.2ms)[0m  SELECT  "microposts".* FROM "microposts" WHERE "microposts"."user_id" = ?  ORDER BY "microposts"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered microposts/_micropost.html.erb (11.1ms)
+  Rendered homes/home.html.erb within layouts/application (20.8ms)
+  [1m[35mNotify Load (0.1ms)[0m  SELECT "notifies".* FROM "notifies" WHERE "notifies"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/_login_panel.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (4.2ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 60ms (Views: 57.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/chats" for 127.0.0.1 at 2018-01-09 23:47:51 +0800
+Processing by ChatsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = ?[0m  [["friend_id", 1]]
+  [1m[35mChat Load (0.3ms)[0m  SELECT "chats".* FROM "chats" INNER JOIN "chats_users" ON "chats"."id" = "chats_users"."chat_id" WHERE "chats_users"."user_id" = ?  [["user_id", 1]]
+  Rendered chats/_new_friends.html.erb (0.6ms)
+  Rendered chats/_search_fridends.html.erb (0.5ms)
+  Rendered chats/_navside.html.erb (29.5ms)
+  Rendered chats/index.html.erb within layouts/application (30.7ms)
+  [1m[36mNotify Load (0.1ms)[0m  [1mSELECT "notifies".* FROM "notifies" WHERE "notifies"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered layouts/_login_panel.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 207ms (Views: 82.4ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/chats" for 127.0.0.1 at 2018-01-09 23:47:54 +0800
+Processing by ChatsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J32lpP4YHCsSsSqc3Db4Qb6oQdP8KzbvlnQawKnW4cbTffXd5ryYRToTxBnSI9qdq8QjTkmjWTVtnbfArrRy7g==", "users"=>"101", "button"=>""}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 101]]
+  [1m[35mChat Load (0.1ms)[0m  SELECT "chats".* FROM "chats" INNER JOIN "chats_users" ON "chats"."id" = "chats_users"."chat_id" WHERE "chats_users"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "chats_users" ON "users"."id" = "chats_users"."user_id" WHERE "chats_users"."chat_id" = ?[0m  [["chat_id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE (LOWER("users"."email") = LOWER('admin@test.com') AND "users"."id" != 101) LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE (LOWER("users"."email") = LOWER('user1@test.com') AND "users"."id" != 1) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chats" ("admin_id", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["admin_id", 1], ["name", "admin-user1"], ["created_at", "2018-01-09 15:47:54.423587"], ["updated_at", "2018-01-09 15:47:54.423587"]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "chats_users" ("user_id", "chat_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 101], ["chat_id", 2], ["created_at", "2018-01-09 15:47:54.425174"], ["updated_at", "2018-01-09 15:47:54.425174"]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "chats_users" ("user_id", "chat_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["chat_id", 2], ["created_at", "2018-01-09 15:47:54.426955"], ["updated_at", "2018-01-09 15:47:54.426955"]]
+  [1m[35m (141.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/chats/2
+Completed 302 Found in 168ms (ActiveRecord: 143.2ms)
+
+
+Started GET "/chats/2" for 127.0.0.1 at 2018-01-09 23:47:54 +0800
+Processing by ChatsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mChat Load (0.6ms)[0m  SELECT  "chats".* FROM "chats" WHERE "chats"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "chats_users" ON "users"."id" = "chats_users"."user_id" WHERE "chats_users"."chat_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["chat_id", 2], ["id", 1]]
+  [1m[35mNotify Load (0.1ms)[0m  SELECT "notifies".* FROM "notifies" WHERE "notifies"."user_id" = 1 AND "notifies"."chat_id" = 2
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "chats_users" ON "users"."id" = "chats_users"."user_id" WHERE "chats_users"."chat_id" = ?[0m  [["chat_id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = ?[0m  [["friend_id", 1]]
+  [1m[35mChat Load (0.1ms)[0m  SELECT "chats".* FROM "chats" INNER JOIN "chats_users" ON "chats"."id" = "chats_users"."chat_id" WHERE "chats_users"."user_id" = ?  [["user_id", 1]]
+  Rendered chats/_new_friends.html.erb (0.1ms)
+  Rendered chats/_search_fridends.html.erb (0.2ms)
+  Rendered chats/_navside.html.erb (7.0ms)
+  [1m[36mMessage Load (0.2ms)[0m  [1mSELECT "messages".* FROM "messages" WHERE "messages"."chat_id" = ?[0m  [["chat_id", 2]]
+  Rendered chats/_chat_info.html.erb (2.6ms)
+  Rendered chats/show.html.erb within layouts/application (15.2ms)
+  [1m[35mNotify Load (0.1ms)[0m  SELECT "notifies".* FROM "notifies" WHERE "notifies"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/_login_panel.html.erb (1.6ms)
+  Rendered layouts/_header.html.erb (4.5ms)
+  Rendered layouts/_content.html.erb (0.2ms)
+Completed 200 OK in 69ms (Views: 53.6ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/messages" for 127.0.0.1 at 2018-01-09 23:47:58 +0800
+Processing by MessagesController#create as JS
+  Parameters: {"utf8"=>"✓", "message"=>{"body"=>"12"}, "chat_room"=>"2", "commit"=>"发送"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mChat Load (0.1ms)[0m  SELECT  "chats".* FROM "chats" WHERE "chats"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "messages" ("body", "user_id", "chat_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["body", "12"], ["user_id", 1], ["chat_id", 2], ["created_at", "2018-01-09 15:47:58.177053"], ["updated_at", "2018-01-09 15:47:58.177053"]]
+  [1m[36m (285.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "chats_users" ON "users"."id" = "chats_users"."user_id" WHERE "chats_users"."chat_id" = ?  [["chat_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "notifies" ("user_id", "chat_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 101], ["chat_id", 2], ["created_at", "2018-01-09 15:47:58.472095"], ["updated_at", "2018-01-09 15:47:58.472095"]]
+  [1m[36m (70.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "notifies" ("user_id", "chat_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["chat_id", 2], ["created_at", "2018-01-09 15:47:58.546875"], ["updated_at", "2018-01-09 15:47:58.546875"]]
+  [1m[35m (82.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/chats/2
+Completed 200 OK in 463ms (ActiveRecord: 440.3ms)
+
+
+Started GET "/chats/2" for 127.0.0.1 at 2018-01-09 23:47:58 +0800
+Processing by ChatsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mChat Load (0.1ms)[0m  SELECT  "chats".* FROM "chats" WHERE "chats"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "chats_users" ON "users"."id" = "chats_users"."user_id" WHERE "chats_users"."chat_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["chat_id", 2], ["id", 1]]
+  [1m[35mNotify Load (0.2ms)[0m  SELECT "notifies".* FROM "notifies" WHERE "notifies"."user_id" = 1 AND "notifies"."chat_id" = 2
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  DELETE FROM "notifies" WHERE "notifies"."id" = ?  [["id", 6]]
+  [1m[36m (62.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "chats_users" ON "users"."id" = "chats_users"."user_id" WHERE "chats_users"."chat_id" = ?  [["chat_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = ?  [["friend_id", 1]]
+  [1m[36mChat Load (0.2ms)[0m  [1mSELECT "chats".* FROM "chats" INNER JOIN "chats_users" ON "chats"."id" = "chats_users"."chat_id" WHERE "chats_users"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered chats/_new_friends.html.erb (0.1ms)
+  Rendered chats/_search_fridends.html.erb (0.2ms)
+  Rendered chats/_navside.html.erb (8.5ms)
+  [1m[35mMessage Load (0.1ms)[0m  SELECT "messages".* FROM "messages" WHERE "messages"."chat_id" = ?  [["chat_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered sync/messages/refetch/_message_row.html.erb (3.1ms)
+  Rendered chats/_chat_info.html.erb (13.4ms)
+  Rendered chats/show.html.erb within layouts/application (31.4ms)
+  [1m[35mNotify Load (0.1ms)[0m  SELECT "notifies".* FROM "notifies" WHERE "notifies"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/_login_panel.html.erb (1.0ms)
+  Rendered layouts/_header.html.erb (3.9ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 142ms (Views: 71.1ms | ActiveRecord: 64.4ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2018-01-09 23:48:03 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mMicropost Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "microposts" WHERE "microposts"."user_id" = ? LIMIT 1[0m  [["user_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mMicropost Load (0.2ms)[0m  [1mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."user_id" = ?  ORDER BY "microposts"."created_at" DESC LIMIT 30 OFFSET 0[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?  [["user_id", 2]]
+  Rendered microposts/_micropost.html.erb (7.4ms)
+  Rendered users/show.html.erb within layouts/application (17.8ms)
+  [1m[36mNotify Load (0.1ms)[0m  [1mSELECT "notifies".* FROM "notifies" WHERE "notifies"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered layouts/_login_panel.html.erb (0.8ms)
+  Rendered layouts/_header.html.erb (3.7ms)
+  Rendered layouts/_content.html.erb (0.2ms)
+Completed 200 OK in 64ms (Views: 60.9ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/sessions/logout" for 127.0.0.1 at 2018-01-09 23:48:05 +0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"2outiAbBo6oXeTenXtm1cRD8fbZGmJhqPjmzTbXgq2Uui/3xHmUnxD/b2SJQzJetBZAfK/MQ97DF0B5NsoI4TQ=="}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 23:48:05 +0800
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_login_panel.html.erb (0.9ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+Completed 200 OK in 43ms (Views: 42.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/computer.png" for 127.0.0.1 at 2018-01-09 23:48:05 +0800

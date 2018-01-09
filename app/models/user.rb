@@ -23,8 +23,8 @@ class User < ActiveRecord::Base
   has_many :notifies, :dependent => :destroy
   
   before_save :downcase_email
-  attr_accessor :remember_token, :activation_token
-  before_create :create_activation_digest
+  attr_accessor :remember_token
+  # before_create :create_activation_digest
   validates :name, presence: true, length: {maximum: 50}
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
