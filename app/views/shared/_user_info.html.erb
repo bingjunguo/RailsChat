@@ -1,6 +1,6 @@
 
 <div  style="width:200px;height:200px;float:left">
-	<%= image_tag @user.picture.url if @user.picture? %>
+	<%= image_tag @user.picture.url() if @user.picture? %>
 </div>
 <div style="width:200px;height:200px;float:left">
 	<h2>

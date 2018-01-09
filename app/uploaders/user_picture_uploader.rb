@@ -1,35 +1,19 @@
-class PictureUploader < CarrierWave::Uploader::Base
-# 郭炳军加，调整图片大小
-  include CarrierWave::MiniMagick
-  process resize_to_limit: [400, 400]
-
+class UserPictureUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
+
+  process resize_to_limit: [180, 180] 
 
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
-  # 使用云存储服务存储图像，把图像与应用所在的文件系统分开；
-  # 此处需要注册，云存储服务很多，我们要使用其中一个
-  # 最受欢迎并且支持比较好的——Amazon 的 Simple Storage Service（简称 S3）。
-  # if Rails.env.production?
-  #   storage :fog
-  # else
-  #   storage :file
-  # end
-  
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-
-  # 添加一个白名单，指定允许上传的图像类型
-  def extension_white_list
-    %w(jpg jpeg gif png)
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

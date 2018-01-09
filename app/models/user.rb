@@ -1,7 +1,7 @@
 # coding: utf-8
 class User < ActiveRecord::Base
 
-  mount_uploader :picture, PictureUploader
+  mount_uploader :picture, UserPictureUploader
 
   has_many :microposts, dependent: :destroy
 
